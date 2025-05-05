@@ -23,12 +23,34 @@
     .icon {
       position: absolute;
       top: 20px;
+      top: 50px;
       left: 50%;
       transform: translateX(-50%);
       max-width: 100px;
+      transform: translateX(-50%) rotateY(0deg);
+      max-width: 120px;
       width: 20vw;
       height: auto;
       pointer-events: none;
+      animation: spin 5s infinite linear;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: translateX(-50%) rotateY(0deg);
+      }
+      25% {
+        transform: translateX(-50%) rotateY(90deg);
+      }
+      50% {
+        transform: translateX(-50%) rotateY(180deg);
+      }
+      75% {
+        transform: translateX(-50%) rotateY(270deg);
+      }
+      100% {
+        transform: translateX(-50%) rotateY(360deg);
+      }
     }
 
     .text {
