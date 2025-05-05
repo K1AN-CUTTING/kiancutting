@@ -99,7 +99,7 @@
           const from = oldText[i] || '';
           const to = newText[i] || '';
           const start = Math.floor(Math.random() * 80);  // Slow down the transition start
-          const end = start + Math.floor(Math.random() * 0 + 40); // Slow down the overall transition time
+          const end = start + Math.floor(Math.random() * 120 + 40); // Slow down the overall transition time
           this.queue.push({ from, to, start, end });
         }
 
