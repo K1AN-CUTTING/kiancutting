@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kian Cutting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://i.ibb.co/RTyyWyC0/Asset-14x.png" type="image/png">
+  <meta name="description" content="KIAN provides expert IT support and hardware solutions—from custom PC builds to smart home setups and repair services. Practical, tech-driven, and tech-savvy.">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+      background: #212121;
+      color: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .icon {
+      position: absolute;
+      top: 20px;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 100px;
+      transform: translateX(-50%) rotateY(0deg);
+      max-width: 120px;
+      width: 20vw;
+      height: auto;
+      pointer-events: none;
+      animation: spin 5s infinite linear;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: translateX(-50%) rotateY(0deg);
+      }
+      25% {
+        transform: translateX(-50%) rotateY(90deg);
+      }
+      50% {
+        transform: translateX(-50%) rotateY(180deg);
+      }
+      75% {
+        transform: translateX(-50%) rotateY(270deg);
+      }
+      100% {
+        transform: translateX(-50%) rotateY(360deg);
+      }
+    }
+
+    .text {
+      font-size: 6vw;
+      font-weight: 100;
+      text-align: center;
+      max-width: 100%;
+      line-height: 1.2;
+    }
+
+    .dud {
+      color: #888;
+    }
+
+    @media (min-width: 768px) {
+      .text {
+        font-size: 3vw;
+      }
+      .icon {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.ibb.co/tG4SRLN/K1AN-3.png" alt="Logo" class="icon">
+  <div class="text"></div>
+
+  <script>
+    class TextScramble {
+      constructor(el) {
+        this.el = el;
+        this.chars = 'KMC1Ξπµ∆Ω₿#%@&≈±¿₪※▣▤▧▩◇◈◆⬟⬢⊠⌘⌖✵';
+        this.update = this.update.bind(this);
+      }
+
+      setText(newText) {
+        const oldText = this.el.innerText;
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise(resolve => this.resolve = resolve);
+        this.queue = [];
+
+        for (let i = 0; i < length; i++) {
+          const from = oldText[i] || '';
+          const to = newText[i] || '';
+          const start = Math.floor(Math.random() * 80);  // Slow down the transition start
+          const end = start + Math.floor(Math.random() * 120 + 40); // Slow down the overall transition time
+          this.queue.push({ from, to, start, end });
+        }
+
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0;
+        this.update();
+        return promise;
+      }
+
+      update() {
+        let output = '';
+        let complete = 0;
+
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+          let { from, to, start, end, char } = this.queue[i];
+
+          if (this.frame >= end) {
+            complete++;
+            output += to;
+          } else if (this.frame >= start) {
+            if (!char || Math.random() < 0.2) {  // Reduce the randomness frequency for smoother transition
+              char = this.randomChar();
+              this.queue[i].char = char;
+            }
+            output += `<span class="dud">${char}</span>`;
+          } else {
+            output += from;
+          }
+        }
+
+        this.el.innerHTML = output;
+
+        if (complete === this.queue.length) {
+          this.resolve();
+        } else {
+          this.frameRequest = requestAnimationFrame(this.update);
+          this.frame++;
+        }
+      }
+
+      randomChar() {
+        return this.chars[Math.floor(Math.random() * this.chars.length)];
+      }
+    }
+
+    const phrases = [
+      'K1AN',
+      'KIAN',
+      'Tech-savvy',
+      'Resourceful',
+      'Independent Thinker',
+      'Tinkerer',
+      // Future Entrepreneur
+      'Creative Coder',
+      'Launch Incoming...',
+    ];
+
+    const el = document.querySelector('.text');
+    const fx = new TextScramble(el);
+
+    let counter = 0;
+    const next = () => {
+      fx.setText(phrases[counter]).then(() => {
+        setTimeout(next, 1250); // Increase delay between phrase changes
+      });
+      counter = (counter + 1) % phrases.length;
+    };
+
+    next();
+  </script>
+</body>
+</html>
