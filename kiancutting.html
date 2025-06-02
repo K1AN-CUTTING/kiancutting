@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K1AN - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+        
+        /* Animation for hero section */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Custom glow effect */
+        .glow {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .glow:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(33, 33, 33, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Nav link hover effect */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-[#212121] text-white font-sans">
+    <!-- Modern Glass Navigation -->
+    <nav class="fixed w-[calc(100%-20px)] z-50 glass rounded-xl mx-[10px] mt-[10px] shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo moved more to the left -->
+                <div class="flex-shrink-0 flex items-center ml-0 md:ml-[-10px]">
+                    <img src="https://i.ibb.co/tG4SRLN/K1AN-3.png" alt="K1AN Logo" class="h-8">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="nav-link text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition duration-300">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition duration-300">About</a>
+                    <a href="#skills" class="nav-link text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition duration-300">Skills</a>
+                    <a href="#projects" class="nav-link text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition duration-300">Projects</a>
+                    <a href="#contact" class="nav-link text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition duration-300">Contact</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="glass p-2 rounded-lg text-white hover:text-gray-300 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass rounded-b-xl overflow-hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/30">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/30">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/30">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/30">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/30">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">K1AN</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-300">Creative Developer & Designer</h2>
+                <p class="text-gray-400 mb-8 max-w-lg">I craft beautiful digital experiences with clean code and thoughtful design. Let's build something amazing together.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="bg-white text-[#212121] px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition duration-300 glow">Get In Touch</a>
+                    <a href="#projects" class="border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-[#212121] transition duration-300 glow">View My Work</a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center floating">
+                    <div class="absolute inset-0 rounded-full bg-[#212121] m-2"></div>
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 m-2 opacity-20 animate-pulse"></div>
+                    <img src="https://i.ibb.co/tG4SRLN/K1AN-3.png" alt="Profile" class="relative z-10 w-3/4 h-3/4 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Me</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-gray-700 glow">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20"></div>
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About me" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">Who am I?</h3>
+                <p class="text-gray-400 mb-6">I'm a passionate developer and designer with over 5 years of experience creating digital products that users love. My journey began with a curiosity about how things work, which evolved into a career building web applications and interfaces.</p>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-medium mb-3">My Approach</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">✓</span>
+                            <span>User-centered design principles</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">✓</span>
+                            <span>Clean, maintainable code</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">✓</span>
+                            <span>Performance optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">✓</span>
+                            <span>Continuous learning and improvement</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="bg-white text-[#212121] px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition duration-300 glow flex items-center">
+                        <i class="fas fa-file-alt mr-2"></i> Download CV
+                    </a>
+                    <a href="#skills" class="border border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-[#212121] transition duration-300 glow flex items-center">
+                        <i class="fas fa-code mr-2"></i> My Skills
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#2d2d2d] rounded-3xl my-12">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Skills</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Design Skills -->
+            <div class="bg-[#3a3a3a] p-6 rounded-xl glow hover:glow-lg transition duration-300">
+                <div class="text-blue-400 text-4xl mb-4">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Design</h3>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center">
+                        <span>UI/UX Design</span>
+                        <span class="text-gray-400">90%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </li>
+                    
+                    <li class="flex justify-between items-center">
+                        <span>Wireframing</span>
+                        <span class="text-gray-400">85%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </li>
+                    
+                    <li class="flex justify-between items-center">
+                        <span>Prototyping</span>
+                        <span class="text-gray-400">80%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Development Skills -->
+            <div class="bg-[#3a3a3a] p-6 rounded-xl glow hover:glow-lg transition duration-300">
+                <div class="text-purple-400 text-4xl mb-4">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Development</h3>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center">
+                        <span>HTML/CSS</span>
+                        <span class="text-gray-400">95%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-purple-500 h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </li>
+                    
+                    <li class="flex justify-between items-center">
+                        <span>JavaScript</span>
+                        <span class="text-gray-400">90%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-purple-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </li>
+                    
+                    <li class="flex justify-between items-center">
+                        <span>React</span>
+                        <span class="text-gray-400">85%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Other Skills -->
+            <div class="bg-[#3a3a3a] p-6 rounded-xl glow hover:glow-lg transition duration-300">
+                <div class="text-pink-400 text-4xl mb-4">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Other</h3>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center">
+                        <span>Problem Solving</span>
+                        <span class="text-gray-400">95%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-pink-500 h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </li>
+                    
+                    <li class="flex justify-between items-center">
+                        <span>Communication</span>
+                        <span class="text-gray-400">90%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-pink-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </li>
+                    
+                    <li class="flex justify-between items-center">
+                        <span>Project Management</span>
+                        <span class="text-gray-400">85%</span>
+                    </li>
+                    <li>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-pink-500 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Projects</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="bg-[#2d2d2d] rounded-xl overflow-hidden glow hover:glow-lg transition duration-300">
+                <div class="h-48
+</html>
