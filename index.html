@@ -555,10 +555,15 @@
             </a>
         </div>
         <div class="project-card bg-[#2a2a2a] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-            <div class="mb-4 overflow-hidden rounded-lg">
-                <img src="https://i.ibb.co/qYKYm6ZM/WEBSITE-MOCK-1.webp" alt="School Dashboard" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="mb-4 overflow-hidden rounded-lg relative project-slideshow">
+            <img src="https://i.ibb.co/qYKYm6ZM/WEBSITE-MOCK-1.webp" 
+                alt="School Dashboard" 
+                class="absolute inset-0 w-full h-48 object-cover transition-opacity duration-1000 opacity-100 first-img">
+
+            <img src="https://i.ibb.co/rN8CvtT/WEBSITE-MOCK-2.webp" 
+                alt="School Dashboard" 
+                class="absolute inset-0 w-full h-48 object-cover transition-opacity duration-1000 opacity-0 second-img">
             </div>
-            <h3 class="text-xl font-semibold mb-2">School Dashboard</h3>
             <p class="text-gray-400 mb-4">An easy-access dashboard that auto-signs users with Google OAuth and syncs Classroom, Drive and Gmail into a modern, easy-to-view interface — includes quicklinks to streamline daily tasks.</p>
             <div class="flex flex-wrap gap-2 mb-4">
                 <span class="text-xs bg-purple-900 bg-opacity-50 px-2 py-1 rounded">Google OAuth</span>
@@ -686,6 +691,21 @@
             card.querySelector('img').style.transform = 'scale(1)';
         });
     });
+
+  document.querySelectorAll('.project-slideshow').forEach(slideshow => {
+    const images = slideshow.querySelectorAll('img');
+    let current = 0;
+
+    setInterval(() => {
+      images[current].classList.remove('opacity-100');
+      images[current].classList.add('opacity-0');
+
+      current = (current + 1) % images.length;
+
+      images[current].classList.remove('opacity-0');
+      images[current].classList.add('opacity-100');
+    }, 7000); // 7 seconds
+  });
 </script>
 </body>
 </html>
