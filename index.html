@@ -681,14 +681,16 @@
         skillObserver.observe(bar);
     });
 
-    // Add hover effect to project cards
+    // Add hover effect to project cards (only zoom the top image of the slideshow or the single image)
     document.querySelectorAll('.project-card').forEach(card => {
+        const image = card.querySelector('.project-slideshow img.opacity-100') || card.querySelector('img');
+        
         card.addEventListener('mouseenter', () => {
-            card.querySelector('img').style.transform = 'scale(1.1)';
+            if (image) image.style.transform = 'scale(1.1)';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.querySelector('img').style.transform = 'scale(1)';
+            if (image) image.style.transform = 'scale(1)';
         });
     });
 
