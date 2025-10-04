@@ -555,14 +555,14 @@
             </a>
         </div>
         <div class="project-card bg-[#2a2a2a] rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-          <div class="mb-4 overflow-hidden rounded-lg relative project-slideshow h-48">
-            <img src="https://i.ibb.co/DDGpd5CH/WEBSITE-MOCK-1-1.webp" 
-                 alt="School Dashboard" 
-                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+          <div class="mb-4 overflow-hidden rounded-lg relative project-slideshow h-48 group">
+            <img src="https://i.ibb.co/DDGpd5CH/WEBSITE-MOCK-1-1.webp"
+                 alt="School Dashboard"
+                 class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 scale-100 group-hover:scale-105">
 
-            <img src="https://i.ibb.co/rN8CvtT/WEBSITE-MOCK-2.webp" 
-                 alt="School Dashboard" 
-                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+            <img src="https://i.ibb.co/rN8CvtT/WEBSITE-MOCK-2.webp"
+                 alt="School Dashboard"
+                 class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-0 scale-100 group-hover:scale-105">
           </div>
           <p class="text-gray-400 mb-4">An easy-access dashboard that auto-signs users with Google OAuth and syncs Classroom, Drive and Gmail into a modern, easy-to-view interface — includes quicklinks to streamline daily tasks.</p>
           <div class="flex flex-wrap gap-2 mb-4">
@@ -681,33 +681,20 @@
         skillObserver.observe(bar);
     });
 
-    // Add hover effect to project cards (only zoom the top image of the slideshow or the single image)
-    document.querySelectorAll('.project-card').forEach(card => {
-        const image = card.querySelector('.project-slideshow img.opacity-100') || card.querySelector('img');
-        
-        card.addEventListener('mouseenter', () => {
-            if (image) image.style.transform = 'scale(1.1)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            if (image) image.style.transform = 'scale(1)';
-        });
+    document.querySelectorAll('.project-slideshow').forEach(slideshow => {
+      const images = slideshow.querySelectorAll('img');
+      let current = 0;
+
+      setInterval(() => {
+        images[current].classList.remove('opacity-100');
+        images[current].classList.add('opacity-0');
+
+        current = (current + 1) % images.length;
+
+        images[current].classList.remove('opacity-0');
+        images[current].classList.add('opacity-100');
+      }, 7000);
     });
-
-  document.querySelectorAll('.project-slideshow').forEach(slideshow => {
-    const images = slideshow.querySelectorAll('img');
-    let current = 0;
-
-    setInterval(() => {
-      images[current].classList.remove('opacity-100');
-      images[current].classList.add('opacity-0');
-
-      current = (current + 1) % images.length;
-
-      images[current].classList.remove('opacity-0');
-      images[current].classList.add('opacity-100');
-    }, 6000);
-  });
 </script>
 </body>
 </html>
